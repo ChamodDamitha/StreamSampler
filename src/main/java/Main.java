@@ -44,7 +44,7 @@ public class Main {
         System.out.println("Sample Average : " + approximate_answer);
 
         System.out.println("Confidence Interval : [" + (approximate_answer - approximate_answer * (1-accuracy)) + ", " +
-                (approximate_answer + approximate_answer * (1-accuracy)));
+                (approximate_answer + approximate_answer * (1-accuracy)) + "]");
 
 
     }
