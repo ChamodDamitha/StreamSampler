@@ -19,28 +19,43 @@
 import java.util.ArrayList;
 
 public class StreamSampler<T> {
-    private double accuracy;
-    private int totalNoOfHashValues;
+    private int totalNoOfHashValues = 1000;
     private int acceptedNoOfHashValues;
-
+    private double accuracy;
     private ArrayList<T> events;
 
+    public StreamSampler(double accuracy, int precisionOfAccuracy) {
+        int temp = 1;
+        for (int i = 0; i < precisionOfAccuracy; i++) {
+            temp *= 10;
+        }
+        this.totalNoOfHashValues = temp;
+        init(accuracy);
+    }
+
     public StreamSampler(double accuracy) {
+        init(accuracy);
+    }
+
+    private void init(double accuracy) {
         if (accuracy >= 1 || accuracy <= 0) {
             throw new IllegalArgumentException("accuracy must be in the range of (0,1)");
         }
         this.accuracy = accuracy;
 
         String accuracyStr = accuracy + "";
-
+        System.out.println(accuracyStr);
         int decimalLength = (accuracyStr.split("\\.")[1]).length();
-        int multiFactor = 1;
-        for (int i = 0; i < decimalLength; i++) {
-            multiFactor *= 10;
-        }
-        acceptedNoOfHashValues = multiFactor - (int) Math.ceil(accuracy * multiFactor);
-        totalNoOfHashValues = multiFactor;
 
+        int precisionOfAccuracy = (totalNoOfHashValues + "").length() - 1;
+        if (decimalLength > precisionOfAccuracy) {
+            throw new IllegalArgumentException("precision of accuracy must be at most for "
+                    + precisionOfAccuracy + " decimal places");
+        }
+        acceptedNoOfHashValues = (int) Math.ceil(accuracy * totalNoOfHashValues);
+
+        System.out.println("totalNoOfHashValues : " + totalNoOfHashValues);
+        System.out.println("acceptedNoOfHashValues : " + acceptedNoOfHashValues);
         events = new ArrayList<T>();
     }
 

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /*
 * Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
@@ -18,33 +20,46 @@
 public class Main {
     public static void main(String[] args) {
 
-        final int noOfEvents = 1000;
-        final double accuracy = 0.99;
-        int real_sum = 0;
-        int sample_sum = 0;
 
-        StreamSampler<Integer> streamSampler = new StreamSampler(accuracy);
+        StreamSampler streamSampler = new StreamSampler(0.50,5);
 
-        for (int i = 0; i < noOfEvents; i++) {
-            real_sum += i;
-            streamSampler.add(i);
-        }
+//        final int noOfEvents = 10000;
+//        final double accuracy = 0.9;
+//        int real_sum = 0;
+//        int sample_sum = 0;
+//
+        Random random = new Random(120);
+//
+//        StreamSampler<Integer> streamSampler = new StreamSampler(accuracy);
+//
+//        for (int i = 0; i < noOfEvents; i++) {
+////            real_sum += i;
+//            real_sum += random.nextInt(10000) + 1;
+//            streamSampler.add(i);
+//        }
+//
+//        for (Integer j : streamSampler.getEvents()) {
+//            sample_sum += j;
+//        }
+//
+//
+//        System.out.println("Accuracy : " + streamSampler.getAccuracy());
+//        System.out.println("Stream Sampler Size : " + streamSampler.getEvents().size());
+//
+//
+//
+////      For average calculation
+//        System.out.println("Real Average : " + (real_sum * 1.0 / noOfEvents));
+//        double approximate_answer = (sample_sum * 1.0 / streamSampler.getEvents().size());
+//
+//        System.out.println("Sample Average : " + approximate_answer);
+//
+//        System.out.println("Confidence Interval : [" + (approximate_answer - approximate_answer * (1-accuracy)) + ", " +
+//                (approximate_answer + approximate_answer * (1-accuracy)) + "]");
 
-        for (Integer j : streamSampler.getEvents()) {
-            sample_sum += j;
-        }
-
-
-        System.out.println("Accuracy : " + streamSampler.getAccuracy());
-        System.out.println("Stream Sampler Size : " + streamSampler.getEvents().size());
-        System.out.println("Real Average : " + (real_sum * 1.0 / noOfEvents));
-
-        double approximate_answer = (sample_sum * 1.0 / streamSampler.getEvents().size());
-
-        System.out.println("Sample Average : " + approximate_answer);
-
-        System.out.println("Confidence Interval : [" + (approximate_answer - approximate_answer * (1-accuracy)) + ", " +
-                (approximate_answer + approximate_answer * (1-accuracy)) + "]");
+//        for (int i = 0; i < 100; i++) {
+//            System.out.println((random.nextInt()));
+//        }
 
 
     }
