@@ -21,9 +21,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        StreamSampler streamSampler = new StreamSampler(0.50,5);
+        StreamSampler streamSampler = new StreamSampler(0.50);
 
-//        final int noOfEvents = 10000;
+        final int noOfEvents = 10000;
 //        final double accuracy = 0.9;
 //        int real_sum = 0;
 //        int sample_sum = 0;
@@ -32,11 +32,11 @@ public class Main {
 //
 //        StreamSampler<Integer> streamSampler = new StreamSampler(accuracy);
 //
-//        for (int i = 0; i < noOfEvents; i++) {
-////            real_sum += i;
+        for (int i = 0; i < noOfEvents; i++) {
+//            real_sum += i;
 //            real_sum += random.nextInt(10000) + 1;
-//            streamSampler.add(i);
-//        }
+            streamSampler.add(i);
+        }
 //
 //        for (Integer j : streamSampler.getEvents()) {
 //            sample_sum += j;
@@ -61,6 +61,10 @@ public class Main {
 //            System.out.println((random.nextInt()));
 //        }
 
-
+        for (int i : streamSampler.getCounts()) {
+            System.out.print(i + ", ");
+        }
+        System.out.println();
+        System.out.println("tot count : " + streamSampler.getTotalCount());
     }
 }
