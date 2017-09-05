@@ -23,7 +23,7 @@ public class Main {
 
         StreamSampler streamSampler = new StreamSampler(0.50);
 
-        final int noOfEvents = 10000;
+        final int noOfEvents = 10;
 //        final double accuracy = 0.9;
 //        int real_sum = 0;
 //        int sample_sum = 0;
@@ -35,7 +35,9 @@ public class Main {
         for (int i = 0; i < noOfEvents; i++) {
 //            real_sum += i;
 //            real_sum += random.nextInt(10000) + 1;
-            streamSampler.add(i);
+            if (streamSampler.isAddable(i)) {
+                System.out.println(i +",1");
+            }
         }
 //
 //        for (Integer j : streamSampler.getEvents()) {
@@ -61,10 +63,10 @@ public class Main {
 //            System.out.println((random.nextInt()));
 //        }
 
-        for (int i : streamSampler.getCounts()) {
-            System.out.print(i + ", ");
-        }
-        System.out.println();
-        System.out.println("tot count : " + streamSampler.getTotalCount());
+////        for (int i : streamSampler.getCounts()) {
+////            System.out.print(i + ", ");
+////        }
+////        System.out.println();
+//        System.out.println("tot count : " + streamSampler.getTotalCount());
     }
 }
