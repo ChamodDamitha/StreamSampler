@@ -84,8 +84,8 @@ public class StreamSampler<T> {
         }
         acceptedNoOfHashValues = (int) Math.ceil(accuracy * totalNoOfHashValues);
 
-        System.out.println("totalNoOfHashValues : " + totalNoOfHashValues);
-        System.out.println("acceptedNoOfHashValues : " + acceptedNoOfHashValues);
+//        System.out.println("totalNoOfHashValues : " + totalNoOfHashValues);
+//        System.out.println("acceptedNoOfHashValues : " + acceptedNoOfHashValues);
     }
 
     /**
