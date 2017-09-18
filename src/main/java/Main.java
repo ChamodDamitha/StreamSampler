@@ -22,6 +22,7 @@ public class Main {
 
 
         StreamSampler streamSampler = new StreamSampler(0.50);
+        ReservoirSampler reservoirSampler = new ReservoirSampler();
 
         final int noOfEvents = 10;
 //        final double accuracy = 0.9;
